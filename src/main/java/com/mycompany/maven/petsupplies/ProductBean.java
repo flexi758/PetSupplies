@@ -25,12 +25,12 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ProductBean {
 
-    private static final String _URL = "jdbc:mysql://localhost:3306/webshop";
+    private static final String _URL = "jdbc:mysql://localhost:3306/petsuppliesdb";
     private static final String _USER = "root";
     private static final String _PASSWORD = "root";
 
-    public List<Products> getProductList() {
-        List<Products> list = new ArrayList<Products>();
+    public List<Product> getProductList() {
+        List<Product> list = new ArrayList<Product>();
         PreparedStatement ps = null;
         Connection con = null;
         ResultSet rs = null;
@@ -38,14 +38,14 @@ public class ProductBean {
 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(_URL, _USER, _PASSWORD);
-            String sql = "SELECT * FROM PRODUCTS";
+            String sql = "SELECT * FROM PRODUCT";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Products prd = new Products();
+                Product prd = new Product();
                 prd.setId(rs.getInt("id"));
                 prd.setName(rs.getString("name"));
-                prd.setPrice(rs.getDouble("price"));
+                prd.setPrice(rs.getBigDecimal("price"));
                 prd.setDescription(rs.getString("description"));
                 list.add(prd);
             }

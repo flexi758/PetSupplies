@@ -5,35 +5,36 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
          <h1>Pet Supplies</h1>
-        <p>Our products:</p>
+        <p>Onze producten:</p>
         <h:dataTable value="#{productBean.getProductList()}" var="p" border="1">
 
             <h:column>
                 <f:facet name="header">
-                    Name
+                    Naam
                 </f:facet>
                 #{p.name}
             </h:column>
 
             <h:column>
                 <f:facet name="header">
-                    Price
+                    Prijs
                 </f:facet>
                 #{p.price}
             </h:column>
 
             <h:column>
                 <f:facet name="header">
-                    Description
+                    Omschrijving
                 </f:facet>
                 #{p.description}
             </h:column>
 
         </h:dataTable>
-        <p>You can order any of these products by calling us at: 012345678</p>
+        <p>U kunt deze producten bestellen door te bellen naar: 012345678</p>
     </h:body>
 </html>
 

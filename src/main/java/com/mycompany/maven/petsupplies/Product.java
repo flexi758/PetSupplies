@@ -6,6 +6,7 @@
 package com.mycompany.maven.petsupplies;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,18 +20,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author AKDENIS1
+ * @author VSAKIDIN
  */
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Products.findAll", query = "SELECT p FROM Products p")
-    , @NamedQuery(name = "Products.findById", query = "SELECT p FROM Products p WHERE p.id = :id")
-    , @NamedQuery(name = "Products.findByName", query = "SELECT p FROM Products p WHERE p.name = :name")
-    , @NamedQuery(name = "Products.findByPrice", query = "SELECT p FROM Products p WHERE p.price = :price")
-    , @NamedQuery(name = "Products.findByDescription", query = "SELECT p FROM Products p WHERE p.description = :description")})
-public class Products implements Serializable {
+    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
+    , @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id")
+    , @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name")
+    , @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price")
+    , @NamedQuery(name = "Product.findByDescription", query = "SELECT p FROM Product p WHERE p.description = :description")})
+public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,24 +44,25 @@ public class Products implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "name")
     private String name;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "price")
-    private double price;
+    private BigDecimal price;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 500)
+    @Size(min = 1, max = 200)
     @Column(name = "description")
     private String description;
 
-    public Products() {
+    public Product() {
     }
 
-    public Products(Integer id) {
+    public Product(Integer id) {
         this.id = id;
     }
 
-    public Products(Integer id, String name, double price, String description) {
+    public Product(Integer id, String name, BigDecimal price, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -83,11 +85,11 @@ public class Products implements Serializable {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -109,10 +111,10 @@ public class Products implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Products)) {
+        if (!(object instanceof Product)) {
             return false;
         }
-        Products other = (Products) object;
+        Product other = (Product) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -121,7 +123,7 @@ public class Products implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.maven.petsupplies.Products[ id=" + id + " ]";
+        return "com.mycompany.maven.petsupplies.Product[ id=" + id + " ]";
     }
     
 }
