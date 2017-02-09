@@ -2,16 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet library="css" name="style.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </h:head>
-    <h:body>
-        <h1>Pet Supplies</h1>
+    <h:body style="background-color: #ececec">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+        <h1><span class="label label-primary">Pet Supplies</span></h1>
         <p>Onze producten:</p>
-        <h:dataTable value="#{productBean.getProductList()}" var="p" border="1">
-
+        <p></p>
+        <h:dataTable class="table-hover" value="#{productBean.getProductList()}" var="p" border="1" id="dt">
+               
             <h:column>
                 <f:facet name="header">
                     Naam
@@ -34,9 +39,8 @@
             </h:column>
 
         </h:dataTable>
+        <p></p>
         <p>U kunt deze producten bestellen door te bellen naar: 0123456789!</p>
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        </div>
     </h:body>
 </html>
-
