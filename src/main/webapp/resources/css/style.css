@@ -11,3 +11,9 @@ and open the template in the editor.
 body {
     font-family: cursive;
 }
+.box {
+    border-radius: 25px;
+    background: #999999;
+    border-style: hidden;
+    border-width: 20px;
+}

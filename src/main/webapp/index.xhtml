@@ -14,12 +14,6 @@
         <div class="col-sm-4">
         <h1><span class="label label-primary">Pet Supplies</span></h1>
         <p>Onze producten:</p>
-        <h:commandButton type="submit" class="btn-default" id="cba" value="Alle dieren">
-            <f:ajax execute="cb" render="dt" /> 
-        </h:commandButton>
-        <h:commandButton class="btn-default" value="Honden">
-            <f:ajax render="dt" />
-        </h:commandButton>
         <p></p>
         <h:dataTable class="table-hover" value="#{productBean.getProductList()}" var="p" border="1" id="dt">
                
